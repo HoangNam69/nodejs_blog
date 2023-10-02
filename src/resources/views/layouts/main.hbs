@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    {{!-- Chứa khung base của trang như header và footer --}}
+    <div class="app">
+        {{> header}}
+        {{!-- Bắt đầu nhúng nội dung từ home.handlebars vào--}}
+        <div class="container">
+            {{{body}}}
+        </div>
+        {{!-- Kết thúc nhúng nội dung từ home.handlebars vào--}}
+        {{> footer}}
+    </div>
+</body>
+
+</html>
