@@ -8,8 +8,16 @@ const port = 3000;
 
 // Static file
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Xử lý lưu dữ liệu khi post và gán dữ liệu vào body. express sử dụng thư viện body parser để gáp dữ liệu vào body, body parser dùng qs npm(query string) để trả về dữ liệu dạng object cho body parser
+app.use(express.urlencoded({
+    extended: "true"
+})); // hỗ trợ cho việc submit ở form
+app.use(express.json()); // Hỗ trợ cho việc submit ở js (XMLHTTP, fetch, ajax, axios)
+
+
 // HTTP logger
-app.use(morgan('combined'));
+// app.use(morgan('combined'));
 
 // Tamplate Engine
 // Tạo tamplate
@@ -29,6 +37,16 @@ app.get('/', (req, res) => {
 
 app.get('/news', (req, res) => {
     res.render('news');
+});
+
+// Render giao diện search khi người dùng truy cập url
+app.get('/search', (req, res) => {
+    res.render('search');
+});
+// Gửi dữ liệu từ phía người dùng về server
+app.post('/search', (req, res) => {
+    console.log(req.body)
+    res.send("");
 });
 
 app.listen(port, () => {
